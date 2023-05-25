@@ -5,7 +5,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <BaseOutputPath>..\..\..\build\.NET\Frontend\bin\</BaseOutputPath>
-    <BaseIntermediateOutputPath>..\..\..\..\build\.NET\Frontend\obj\</BaseIntermediateOutputPath>
+    <BaseIntermediateOutputPath>..\..\..\build\.NET\Frontend\obj\</BaseIntermediateOutputPath>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rd &quot;$(ProjectDir)obj&quot; /S /Q" />
+  </Target>
 
 </Project>
