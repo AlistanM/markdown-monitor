@@ -13,4 +13,10 @@
     <Exec Command="rd &quot;$(ProjectDir)obj&quot; /S /Q" />
   </Target>
 
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
 </Project>

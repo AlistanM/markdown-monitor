@@ -8,6 +8,17 @@
     <BaseIntermediateOutputPath>..\..\..\build\.NET\Common\obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Unity" Version="5.11.10" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="rd &quot;$(ProjectDir)obj&quot; /S /Q" />
   </Target>
