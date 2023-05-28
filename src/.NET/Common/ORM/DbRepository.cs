@@ -1,8 +1,6 @@
 ﻿using Common.Interfaces;
 using Common.ORM.Models;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Common.ORM;
 
