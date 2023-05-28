@@ -9,6 +9,14 @@
     <BaseIntermediateOutputPath>..\..\..\build\.NET\ETL\obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ResponseParser\Models\OZON\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="rd &quot;$(ProjectDir)obj&quot; /S /Q" />
   </Target>
