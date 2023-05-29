@@ -27,7 +27,10 @@ internal class MainContext : DbContext
         modelBuilder.Entity<Category>().HasKey(x => x.Id);
 
         modelBuilder.Entity<Category>().Property(x => x.Name);
-        modelBuilder.Entity<Category>().HasOptional(x => x.ParentCategory);
+        modelBuilder.Entity<Category>().Property(x => x.OriginalId).IsRequired();
+        modelBuilder.Entity<Category>().HasOptional(x => x.ParentCategory)
+            .WithMany()
+            .HasForeignKey(x => x.ParentId);
         #endregion
 
         #region Product
@@ -39,6 +42,8 @@ internal class MainContext : DbContext
         modelBuilder.Entity<Product>().Property(x => x.Name);
         modelBuilder.Entity<Product>().Property(x => x.OriginalId);
         modelBuilder.Entity<Product>().HasIndex(x => x.OriginalId);
+        modelBuilder.Entity<Product>().Property(x => x.Url);
+        modelBuilder.Entity<Product>().Property(x => x.Marketplace);
         modelBuilder.Entity<Product>()
             .HasRequired(x => x.Category)
             .WithMany(x => x.Products)
@@ -69,6 +74,7 @@ internal class MainContext : DbContext
         modelBuilder.Entity<SearchString>().HasKey(x => x.Id);
 
         modelBuilder.Entity<SearchString>().Property(x => x.StringQueryString);
+        modelBuilder.Entity<SearchString>().Property(x => x.Marketplaces);
         #endregion
 
         #region SessionSearchString
@@ -90,7 +96,10 @@ internal class MainContext : DbContext
             .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         modelBuilder.Entity<Session>().HasKey(x => x.Id);
 
-        modelBuilder.Entity<Session>().Property(x => x.SessionDate).IsRequired();
+        modelBuilder.Entity<Session>().Property(x => x.StartDate).IsRequired();
+        modelBuilder.Entity<Session>().Property(x => x.EndDate).IsOptional();
+        modelBuilder.Entity<Session>().Property(x => x.Status).IsRequired();
+        modelBuilder.Entity<Session>().Property(x => x.ErrorMessage);
         #endregion
     }
 }

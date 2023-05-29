@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Common.ORM.Models;
+﻿namespace Common.ORM.Models;
 
 public class SessionSearchString : BaseEntity
 {
