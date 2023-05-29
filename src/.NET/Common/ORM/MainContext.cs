@@ -73,8 +73,9 @@ internal class MainContext : DbContext
             .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         modelBuilder.Entity<SearchString>().HasKey(x => x.Id);
 
-        modelBuilder.Entity<SearchString>().Property(x => x.StringQueryString);
+        modelBuilder.Entity<SearchString>().Property(x => x.QueryString);
         modelBuilder.Entity<SearchString>().Property(x => x.Marketplaces);
+        modelBuilder.Entity<SearchString>().Property(x => x.IsDeleted).IsRequired().HasColumnAnnotation("Default", false);
         #endregion
 
         #region SessionSearchString
