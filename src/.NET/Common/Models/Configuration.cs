@@ -4,4 +4,5 @@ public class Configuration
 {
     public string DataConnectionString { get; set; }
     public bool AllowDataLoss { get; set; }
+    public int LoadTaskSecondInterval { get; set; }
 }

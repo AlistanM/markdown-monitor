@@ -6,6 +6,7 @@ public class SessionProduct : BaseEntity
 {
     public long SessionId { get; set; }
     public Session Session { get; set; }
+    public SessionSearchString SessionSearchString { get; set; }
     public Product Product { get; set; }
     public decimal Price { get; set; }
     public decimal OriginalPrice { get; set; }

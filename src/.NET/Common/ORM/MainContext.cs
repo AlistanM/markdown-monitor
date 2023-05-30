@@ -61,6 +61,7 @@ internal class MainContext : DbContext
         modelBuilder.Entity<SessionProduct>().Property(x => x.Price).HasPrecision(18, 2);
         modelBuilder.Entity<SessionProduct>().Property(x => x.Rating);
         modelBuilder.Entity<SessionProduct>().HasRequired(x => x.Product);
+        modelBuilder.Entity<SessionProduct>().HasRequired(x => x.SessionSearchString);
         modelBuilder.Entity<SessionProduct>()
             .HasRequired(x => x.Session)
             .WithMany(x => x.SessionProducts)

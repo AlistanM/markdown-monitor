@@ -42,7 +42,8 @@ internal class DbRepository : IDbRepository
     {
         return _context.SessionProducts
             .Include(x => x.Product)
-            .Include(x => x.Session);
+            .Include(x => x.Session)
+            .Include(x => x.SessionSearchString);
     }
 
     public IQueryable<SessionSearchString> GetSessionsSearchStrings()
