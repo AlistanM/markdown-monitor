@@ -43,6 +43,7 @@ internal class MainContext : DbContext
         modelBuilder.Entity<Product>().Property(x => x.OriginalId);
         modelBuilder.Entity<Product>().HasIndex(x => x.OriginalId);
         modelBuilder.Entity<Product>().Property(x => x.Url);
+        modelBuilder.Entity<Product>().Property(x => x.ImageUrl);
         modelBuilder.Entity<Product>().Property(x => x.Marketplace);
         modelBuilder.Entity<Product>()
             .HasRequired(x => x.Category)

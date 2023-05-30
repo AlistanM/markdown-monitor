@@ -11,5 +11,7 @@ public class Product : BaseEntity
     public long CategoryId { get; set; }
     [MaxLength(500)]
     public string Url { get; set; }
+    [MaxLength(500)]
+    public string ImageUrl { get; set; }
     public Marketplace Marketplace { get; set; }
 }
