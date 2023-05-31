@@ -62,11 +62,10 @@ internal class MainContext : DbContext
         modelBuilder.Entity<SessionProduct>().Property(x => x.Price).HasPrecision(18, 2);
         modelBuilder.Entity<SessionProduct>().Property(x => x.Rating);
         modelBuilder.Entity<SessionProduct>().HasRequired(x => x.Product);
-        modelBuilder.Entity<SessionProduct>().HasRequired(x => x.SessionSearchString);
         modelBuilder.Entity<SessionProduct>()
-            .HasRequired(x => x.Session)
+            .HasRequired(x => x.SessionSearchString)
             .WithMany(x => x.SessionProducts)
-            .HasForeignKey(x => x.SessionId);
+            .HasForeignKey(x => x.SessionSearchStringId);
         #endregion
 
         #region SearchString

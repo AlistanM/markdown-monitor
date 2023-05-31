@@ -1,6 +1,7 @@
 ﻿using Common.Interfaces;
 using Common.ORM.Models;
 using System.Data.Entity;
+using System.Runtime.CompilerServices;
 
 namespace Common.ORM;
 
@@ -34,16 +35,16 @@ internal class DbRepository : IDbRepository
     public IQueryable<Session> GetSessions()
     {
         return _context.Sessions
-            .Include(x => x.SessionProducts)
-            .Include(x => x.SessionSearchStrings);
+            .Include(x => x.SessionSearchStrings)
+            .Include(x => x.SessionSearchStrings.Select(y => y.SessionProducts));
     }
 
     public IQueryable<SessionProduct> GetSessionsProducts()
     {
         return _context.SessionProducts
             .Include(x => x.Product)
-            .Include(x => x.Session)
-            .Include(x => x.SessionSearchString);
+            .Include(x => x.SessionSearchString)
+            .Include(x => x.SessionSearchString.Session);
     }
 
     public IQueryable<SessionSearchString> GetSessionsSearchStrings()
