@@ -10,6 +10,7 @@ cd src\.NET
 dotnet restore -s https://api.nuget.org/v3/index.json
 dotnet build
 "C:\Windows\System32\inetsrv\appcmd.exe" stop sites %iisSiteName%
+timeout 3
 dotnet publish -r win-x64
 "C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisSiteName%
 cd ..\..\deployment
