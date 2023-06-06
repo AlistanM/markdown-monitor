@@ -19,4 +19,4 @@ go build -a -o .\bin\
 copy /Y .\web.config .\bin\web.config
 
 "C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisSiteName%
-cd ..\..\deployment
+cd ..\..\..\deployment
