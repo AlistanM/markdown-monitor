@@ -1,4 +1,5 @@
-set iisSiteName="markdown-monitor"
+set iisUI="UI"
+set iisAPI="API"
 
 
 cd ..
@@ -7,7 +8,8 @@ git checkout master
 git pull
 git stash pop config_save
 
-"C:\Windows\System32\inetsrv\appcmd.exe" stop sites %iisSiteName%
+"C:\Windows\System32\inetsrv\appcmd.exe" stop sites %iisUI%
+"C:\Windows\System32\inetsrv\appcmd.exe" stop sites %iisAPI%
 
 cd src\.NET
 dotnet restore -s https://api.nuget.org/v3/index.json
@@ -18,5 +20,6 @@ cd ..\go\api
 go build -a -o .\bin\
 copy /Y .\web.config .\bin\web.config
 
-"C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisSiteName%
+"C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisUI%
+"C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisAPI%
 cd ..\..\..\deployment
