@@ -6,8 +6,10 @@ import (
 )
 
 func main() {
+	writer := InitLogs()
+
 	server := new(service.Server)
-	if err := server.Start("8080"); err != nil {
+	if err := server.Start(writer); err != nil {
 		log.Fatalf("Server was stopped with error: %s", err.Error())
 	}
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<EnableServerLogging>True</EnableServerLogging>
+	<LogPath>.\logs\</LogPath>
+	<ServerPort>8080</ServerPort>
+	<SqlConnectionString>ConnectionString</SqlConnectionString>
+</Configuration>

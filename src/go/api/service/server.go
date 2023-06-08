@@ -2,6 +2,8 @@ package service
 
 import (
 	"context"
+	"io"
+	config "markdown-monitor/configuration"
 	"markdown-monitor/service/controllers"
 	"net/http"
 	"time"
@@ -13,15 +15,15 @@ type Server struct {
 	instance *http.Server
 }
 
-func (s *Server) Start(port string) error {
+func (s *Server) Start(writer io.Writer) error {
 	router := new(controllers.Router)
 
 	s.instance = &http.Server{
-		Addr:           ":" + port,
+		Addr:           ":" + config.Instance().ServerPort,
 		MaxHeaderBytes: MaxBytes,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
-		Handler:        router.InitRoutes(),
+		Handler:        router.InitRoutes(writer),
 	}
 
 	return s.instance.ListenAndServe()

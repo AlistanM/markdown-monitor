@@ -1,21 +1,28 @@
 package controllers
 
 import (
+	"io"
+	config "markdown-monitor/configuration"
+
 	"github.com/gin-gonic/gin"
 )
 
 type Router struct {
 }
 
-const LogPath = "..\\logs\\"
+func initLogs(router *gin.Engine, writer io.Writer) {
+	if config.Instance().EnableServerLogging {
+		router.Use(
+			gin.LoggerWithWriter(writer, config.Instance().LogPath+".\\not-logged"),
+			gin.Recovery(),
+		)
+	}
+}
 
-func (r *Router) InitRoutes() *gin.Engine {
+func (r *Router) InitRoutes(writer io.Writer) *gin.Engine {
 	router := gin.New()
 
-	router.Use(
-		gin.LoggerWithWriter(gin.DefaultWriter, LogPath),
-		gin.Recovery(),
-	)
+	initLogs(router, writer)
 
 	api := router.Group("/")
 	{
