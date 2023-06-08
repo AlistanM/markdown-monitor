@@ -19,6 +19,7 @@ dotnet publish -r win-x64
 cd ..\go\api
 go build -a -o .\bin\
 copy /Y .\web.config .\bin\web.config
+copy /Y .\go-config.xml .\bin\go-config.xml
 
 "C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisUI%
 "C:\Windows\System32\inetsrv\appcmd.exe" start sites %iisAPI%
